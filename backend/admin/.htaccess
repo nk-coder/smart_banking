@@ -1,0 +1,14 @@
+RewriteEngine On
+RewriteRule ^([0-9]+) index.php
+
+RewriteRule ^index?$ index.php
+
+RewriteRule ^adminLogin?$ adminLogin.php
+RewriteRule ^customerList?$ customerList.php
+RewriteRule ^loanRules?$ loanRules.php
+RewriteRule ^loanRulesAdd?$ loanRulesAdd.php
+RewriteRule ^loanRulesEdit?$ loanRulesEdit.php
+RewriteRule ^loans?$ loans.php
+RewriteRule ^loanRequestsNew?$ loanRequestsNew.php
+RewriteRule ^loanRequestsApproved?$ loanRequestsApproved.php
+RewriteRule ^loanRequestsReject?$ loanRequestsReject.php

@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule ^([0-9]+) index.php
+
+RewriteRule ^index?$ index.php
+
+RewriteRule ^account_request?$ account_request.php
+RewriteRule ^loanRules?$ loanRules.php

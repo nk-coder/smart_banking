@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteRule ^([0-9]+) index.php
+
+RewriteRule ^index?$ index.php
+
+RewriteRule ^customerLogin?$ customerLogin.php
+RewriteRule ^profile?$ profile.php
+RewriteRule ^balanceTransfer?$ balanceTransfer.php
+RewriteRule ^loanRequest?$ loanRequest.php
+RewriteRule ^customerEdit?$ customerEdit.php
+RewriteRule ^changePassword?$ changePassword.php
