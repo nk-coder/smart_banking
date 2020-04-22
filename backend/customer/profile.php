@@ -47,7 +47,7 @@ include_once('template/sidebar.php');
 					<a data-toggle="tab" href="#edit" class="contact-map">Loan</a>
 					</li>
 					<li>
-					<a data-toggle="tab" href="#change_password">Change Password</a>
+					<a data-toggle="tab" href="#transaction_history">Transaction History</a>
 					</li>
 				</ul>
 			</div><!-- /panel-heading -->
@@ -140,17 +140,40 @@ include_once('template/sidebar.php');
 					</div>
 					<!-- /tab-pane -->
 
-					<div id="change_password" class="tab-pane">
+					<div id="transaction_history" class="tab-pane">
 						<div class="row">
 							<div class="col-lg-8 col-lg-offset-2 detailed mt">
-								<div class="" style="text-align: center; font-size: 17px;">
-									
-								</div>
+								<h4 class="mb">Transaction</h4>
 								<?php 
-									$query = mysqli_query($con,"SELECT * FROM loan_request");
+									$transactions = mysqli_query($con,"SELECT * FROM `transactions` JOIN accounts on transactions.account_no=accounts.account_no  WHERE accounts.customer_id='$customerLoggedIn' ");
+									if (mysqli_num_rows($transactions) == 0) {
+										echo "<h3>No transaction happend yet</h3>";
+									}else{
 								?>
-								
-								<h4 class="mb">Change Password</h4>
+								<table class="table table-striped table-advance table-hover">
+									<thead>
+										<tr>
+											<th>Reciver Account</th>
+											<th>Amount</th>
+											<th>Date</th>
+											<th>Transaction Type</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php foreach($transactions as $transaction){ ?>
+										<tr>
+											<td><?php echo $transaction['receiver_account']; ?></td>
+											<td><?php echo $transaction['amount']; ?></td>
+											<td><?php echo $transaction['date']; ?></td>
+											<td><?php echo $transaction['transaction_type']; ?></td>
+											
+											
+										</tr>
+										<?php } } //end foreach
+			                                   ?>
+
+									</tbody>
+								</table>
 								
 							</div>
 							<!-- /col-lg-8 -->

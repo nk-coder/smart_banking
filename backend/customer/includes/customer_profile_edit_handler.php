@@ -130,7 +130,6 @@ if(isset($_POST['change_password'])){
 		array_push ($message_array,"Email Format is Invalid");
 	}
     
-
     //username
     $username = strip_tags($_POST['username']); 
     $username = str_replace(' ', '', $username);  
@@ -146,47 +145,9 @@ if(isset($_POST['change_password'])){
     }
 
     if(empty($message_array)){
-    	$verification_code = uniqid();
-    	$oldEmail = $customer['email'];
-    	//start the process of mail sending
-			include '../../includes/mailSender.php';
-			$mail->addAddress($oldEmail, $first_name);
-			$mail->Subject = 'Varification code';
-			$mail->Body = "<html>
-			            <head>
-			              <style>
-			                a{
-			                  background-color: #4CAEC8;
-			                  border: none;
-			                  color: white !important;
-			                  padding: 15px 32px;
-			                  text-align: center;
-			                  text-decoration: none;
-			                  display: inline-block;
-			                  font-size: 16px;
-			                  border-radius: 5px;
-			                }
-			              </style>
-			            </head>
-			            <body>
-			              <h2>Your Varification Code:</h2><br>
-			              <h2>$verification_code</h2>
-			              
-			            </body>
-			            </html>";
-        if ($mail->send()){
-        	mysqli_query($con, "UPDATE customers SET verification_key = '$verification_code' WHERE id='$customerLoggedIn' ");
-        	?>
-        	<script type="text/javascript">
-        		alert("give your varification key");
-        		var side1 =prompt("give your varification key","");
-        		console.log(side1);
-        	</script>
-        	<?php
-        	//header("Location: verification.php");
-        }else{
-        	array_push ($message_array,"Something wrong happened! Please try again!");
-        }
+    	
+        	mysqli_query($con, "UPDATE customers SET first_name='$first_name',last_name='$last_name',gender='$gender',DoB='$DoB',address='$address',postcode='$postcode',nationality='$nationality',occupation='$occupation',phone='$phone',email='$email',username='$username' WHERE id='$customerLoggedIn' ");
+        	
     }
   }
 ?>
