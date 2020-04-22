@@ -13,3 +13,10 @@ University Project on internet banking
 
 6.	System calculates the monthly payable amount with the interest rate and payable year.
 
+Database setup
+1. Open db_setup folder from root path and you will get setup.php file
+
+2. Open your browser and run this file from loacl host like http://localhost/smart_banking/db_setup/setup.php
+
+3. Your database will be set up
+
