@@ -70,7 +70,7 @@ include_once('includes/loanRulesHandler.php');
 								<?php if(in_array("Interest Rate should be numeric",$message_array)) echo "<span style='color: #e74c3c;'>Interest Rate should be numeric</span> <br>";?>
 							</div>
 							<div class="form-group">
-								<label class="col-lg-2 control-label">Maximum payable time (In Month)</label>
+								<label class="col-lg-2 control-label">Maximum payable time (In Year)</label>
 								<div class="col-lg-6">
 									<input type="number" min="1" placeholder="maxtime" name="maxtime" id="country" class="form-control">
 								</div>

@@ -10,13 +10,14 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])) {
 	$minimumLoanAmount = $_POST['minimumLoanAmount'];
 	$maximumLoanAmount = $_POST['maximumLoanAmount'];
 	$interestRate = $_POST['interestRate'];
+	$maxtime = $_POST['maxtime'];
 	$others = $_POST['others'];
 
 	// get loan type is already added in database or not
-	$getLoans = mysqli_query($con,"SELECT loan_type FROM laons WHERE loan_type='$loanType' ");
+	$getLoans = mysqli_query($con,"SELECT loan_type FROM loan_types WHERE loan_type='$loanType' ");
 
 	//check all field is empty or not
-	if (empty($loanType) || empty($minimumIncome) || empty($minimumAge) || empty($maximumAge) || empty($minimumLoanAmount) || empty($maximumLoanAmount) || empty($interestRate) || empty($others)) {
+	if (empty($loanType) || empty($minimumIncome) || empty($minimumAge) || empty($maximumAge) || empty($minimumLoanAmount) || empty($maximumLoanAmount) || empty($interestRate) || empty($maxtime) || empty($others)) {
 		array_push ($message_array,"All field must be filled out");
 	}else if (mysqli_num_rows($getLoans)>0) {
 		array_push ($message_array,"already added");
@@ -55,7 +56,7 @@ if (isset($_POST['submit']) && !empty($_POST['submit'])) {
 	
 	if (empty($message_array)) {
 		
-		$insert_query = mysqli_query($con, "INSERT INTO loans VALUES('','$loanType','$minimumAge','$maximumAge','$minimumIncome','$minimumLoanAmount','$maximumLoanAmount','$interestRate','$others')");
+		$insert_query = mysqli_query($con, "INSERT INTO loan_types VALUES('','$loanType','$minimumAge','$maximumAge','$minimumIncome','$minimumLoanAmount','$maximumLoanAmount','$interestRate','$maxtime','$others')");
 		if ($insert_query) {
 			array_push ($message_array,"Loan Added Successfully");
 		}

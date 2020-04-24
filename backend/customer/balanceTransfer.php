@@ -35,14 +35,14 @@ if (isset($_POST['submit'])) {
 
         if ($mail->send()){
         	$deduct = $customer_account['balance'] - $amount; //deduct blance from sender account
-			$add = $receiver_acc['balance'] + $amount; // Add balance into receiver account
-			
-		 	$transfer = mysqli_query($con,"INSERT INTO transactions VALUES('','$sender_acc','$receiver_account_no','$amount','$date','Balance_transfer') ");
-			if ($transfer) {
-				mysqli_query($con,"UPDATE accounts SET accounts.balance = '$deduct' WHERE accounts.account_no ='$sender_acc' ");
-				mysqli_query($con,"UPDATE accounts SET accounts.balance = '$add' WHERE accounts.account_no ='$receiver_account_no' ");
-				array_push($message_array,"Fund Transfered Successfully");
-			}
+    			$add = $receiver_acc['balance'] + $amount; // Add balance into receiver account
+    			
+    		 	$transfer = mysqli_query($con,"INSERT INTO transactions VALUES('','$sender_acc','$receiver_account_no','$amount','$date','Balance_transfer') ");
+    			if ($transfer) {
+    				mysqli_query($con,"UPDATE accounts SET accounts.balance = '$deduct' WHERE accounts.account_no ='$sender_acc' ");
+    				mysqli_query($con,"UPDATE accounts SET accounts.balance = '$add' WHERE accounts.account_no ='$receiver_account_no' ");
+    				array_push($message_array,"Fund Transfered Successfully");
+    			}
         }else{
         	array_push ($message_array,"Something wrong happened! Please try again!");
       	}

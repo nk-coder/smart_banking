@@ -127,6 +127,7 @@
 	  `minimum_salary` float(11,2) NOT NULL,
 	  `minimum_loan_amount` float(11,2) NOT NULL,
 	  `maximum_loan_amount` float(15,2) NOT NULL,
+	  `maximum_pay_time` int(3) NOT NULL COMMENT 'years',
 	  `interest_rate` float(3,2) NOT NULL,
 	  `others` text NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
