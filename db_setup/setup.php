@@ -146,16 +146,16 @@
 	  `loan_amount` float(15,2) NOT NULL,
 	  `request_date` date NOT NULL,
 	  `pay_time` int(11) NOT NULL,
-	  `checked` int(2) NOT NULL
-	  `approved` int(2) NOT NULL
-	  `approved_date` date NOT NULL
+	  `checked` int(2) NOT NULL,
+	  `approved` int(2) NOT NULL,
+	  `approved_date` date NOT NULL,
 	  `comments` text NOT NULL,
 	  `approved_amount` float(15,3) NOT NULL,
 	  `mature_date` date NOT NULL,
 	  `monthly_payable` float(15,3) NOT NULL,
 	  `total_payable` float(15,3) NOT NULL,
 	  `total_paid` float(15,3) NOT NULL,
-	  `remaining` float(15,3) NOT NULL,
+	  `remaining` float(15,3) NOT NULL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
 	if ($con->query($loan_request_sql) === TRUE) {

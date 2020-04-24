@@ -3,6 +3,21 @@ include_once('template/head.php');
 include_once('template/header.php');
 include_once('template/sidebar.php');
 
+$msg = array();
+if (isset($_GET['id'])){
+	$id = $_GET['id'];
+	$account_no = rand(10000000,99999999);
+	$update_sql = mysqli_query($con,"UPDATE customers SET approved='YES' WHERE id='$id'");
+	$create_account = mysqli_query($con,"INSERT INTO accounts VALUES('','current','$account_no','$id','5000') ");
+	if ($update_sql){
+	//header('location:newCustomers.php');
+	array_push($msg, "Customer approved");
+	//return $message;
+	}else{
+
+	}
+}
+
 ?>
 
 <section id="main-content">
@@ -14,6 +29,7 @@ include_once('template/sidebar.php');
 						<h4><i class="fa fa-user"></i> New Customers</h4>
 						<hr>
 						<?php
+						if(in_array("Customer approved",$msg)) echo "<span style='color: #27ae60;'><h2>Customer account request approved</h2></span> <br>";
 							$new_customer_request = mysqli_query($con,"SELECT * FROM customers WHERE verified=1 AND approved='NO' ORDER BY id DESC ");
 							if (mysqli_num_rows($new_customer_request) == 0) {
 								echo "<h3>There is no customer to approve</h3>";
@@ -53,7 +69,7 @@ include_once('template/sidebar.php');
 								<td><?php echo $customer['email']; ?></td>
 								<td><?php echo $customer['created_at']; ?></td>
 								<td>
-								<a class="btn btn-success btn-xs" href="customerApprove.php?id=<?php echo $customer['id']; ?>" style="color:#fff; text-decoration:none"><i class="fa fa-check"></i></a>
+								<a class="btn btn-success btn-xs" href="newCustomers.php?id=<?php echo $customer['id']; ?>" style="color:#fff; text-decoration:none"><i class="fa fa-check"></i></a>
 								</td>
 							</tr>
 							<?php } } //end foreach

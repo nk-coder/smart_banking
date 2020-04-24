@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
 		include '../../includes/mailSender.php';
 		$mail->addAddress($customer['email'], $customer['first_name']);
         $mail->Subject = 'Fund Transfer';
-        $mail->Body = '<b>Dear Sir,</b> \nYour A/C '.$customer_account['account_no'].' debited by BDT '.$amount.' on '.$date;
+        $mail->Body = '<b>Dear Sir,</b>Your A/C '.$customer_account['account_no'].' debited by BDT '.$amount.' on '.$date;
 
         if ($mail->send()){
         	$deduct = $customer_account['balance'] - $amount; //deduct blance from sender account
@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
               	<?php if(in_array("Insufficient Balance",$message_array)) echo "<div class='alert alert-danger'>Insufficient Balance</div> <br>";?>
               		<?php if(in_array("The Receiver Account was incorret",$message_array)) echo "<div class='alert alert-danger'>The Receiver Account was incorret</div> <br>";?>              
               
-              	<?php if(in_array("Balance Transfered Successfully",$message_array)) echo "<div class='alert alert-success'>Balance Transfered Successfully</div> <br>";?>
+              	<?php if(in_array("Fund Transfered Successfully",$message_array)) echo "<div class='alert alert-success'>Balance Transfered Successfully</div> <br>";?>
            
               <div class="form-send">
                 <input type="submit" name="submit" class="btn btn-large btn-primary" value="Transfer">

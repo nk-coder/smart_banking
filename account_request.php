@@ -25,6 +25,7 @@ include_once('includes/account_request_handler.php');
       <p>Pleace give required information</p>
     </div>
     <span class="subheading">
+    <?php if(in_array("All field must be filled out",$message_array)) echo "<span style='color: #e74c3c;'>All field must be filled out</span> <br>";?>
     <?php if(in_array("Email already exist",$message_array)) echo "<span style='color: #e74c3c;'>Email already exist</span> <br>";?>
     <?php if(in_array("Email Format is Invalid",$message_array)) echo "<span style='color: #e74c3c;'>Email Format is Invalid</span> <br>";?>
     <?php if(in_array("Emails don't match",$message_array)) echo "<span style='color: #e74c3c;'>Emails don't match</span> <br>";?>
@@ -43,49 +44,88 @@ include_once('includes/account_request_handler.php');
       <div class="col-md-12 order-md-last d-flex">
         <form action="" class="bg-primary p-5 contact-form" method="POST" enctype="multipart/form-data">
           <div class="form-group">
-            <input type="text" class="form-control" name="first_name" placeholder="First Name">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" value="<?php if(isset($_SESSION['first_name'])) {
+                echo $_SESSION['first_name'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="<?php if(isset($_SESSION['last_name'])) {
+                echo $_SESSION['last_name'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="date" class="form-control" name="dob" placeholder="Date of Birth">
+            <input type="date" class="form-control" name="dob" placeholder="Date of Birth" value="<?php if(isset($_SESSION['dob'])) {
+                echo $_SESSION['dob'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="gender" placeholder="Gender">
+              <select class="form-control" name="gender">
+                
+                <?php 
+                  if (isset($_SESSION['gender']) && $_SESSION['gender']=='Male') {
+                    echo "<option value='' style='color: black'>Select Gender</option>";
+                    echo "<option selected='' value='Male' style='color:black'>Male</option>";
+                    echo "<option value='Female' style='color:black'>Female</option>";
+                  }elseif (isset($_SESSION['gender']) && $_SESSION['gender']=='Female') {
+                    echo "<option value='' style='color: black'>Select Gender</option>";
+                    echo "<option value='Female' style='color:black'>Male</option>";
+                    echo "<option selected='' value='Female' style='color:black'>Female</option>";
+                  }else{ ?>
+                    <option value="" style="color: black">Select Gender</option>
+                    <option value='Male' style='color:black'>Male</option>
+                    <option value='Female' style='color:black'>Female</option>
+                  <?php }
+                ?>
+              </select>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="address" placeholder="Address">
+            <input type="text" class="form-control" name="address" placeholder="Address" value="<?php if(isset($_SESSION['address'])) {
+                echo $_SESSION['address'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="postcode" placeholder="Post Code">
+            <input type="text" class="form-control" name="postcode" placeholder="Post Code" value="<?php if(isset($_SESSION['postcode'])) {
+                echo $_SESSION['postcode'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="nationality" placeholder="Nationality">
+            <input type="text" class="form-control" name="nationality" placeholder="Nationality" value="<?php if(isset($_SESSION['nationality'])) {
+                echo $_SESSION['nationality'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="occupation" placeholder="Occupation">
+            <input type="text" class="form-control" name="occupation" placeholder="Occupation" value="<?php if(isset($_SESSION['occupation'])) {
+                echo $_SESSION['occupation'];
+              }  ?>">
           </div>
           <div class="form-group">
             <input type="file" class="form-control" name="image" placeholder="Image">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="phone" placeholder="Phone">
+            <input type="text" class="form-control" name="phone" placeholder="Phone" value="<?php if(isset($_SESSION['phone'])) {
+                echo $_SESSION['phone'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Your Email">
+            <input type="email" class="form-control" name="email" placeholder="Your Email" value="<?php if(isset($_SESSION['email'])) {
+                echo $_SESSION['email'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" name="email2" placeholder="Confirm Email">
+            <input type="email" class="form-control" name="email2" placeholder="Confirm Email" value="<?php if(isset($_SESSION['email2'])) {
+                echo $_SESSION['email2'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username">
+            <input type="text" class="form-control" name="username" placeholder="Username" value="<?php if(isset($_SESSION['username'])) {
+                echo $_SESSION['username'];
+              }  ?>">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="password" placeholder="Password">
+            <input type="password" class="form-control" name="password" placeholder="Password">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" name="password2" placeholder="Confirm Password">
+            <input type="password" class="form-control" name="password2" placeholder="Confirm Password">
           </div>
           
           <div class="form-group">

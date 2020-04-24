@@ -21,6 +21,9 @@
     $date = date("Y-m-d");
 
     //var_dump($_POST['account_request']); exit();
+    if (empty($first_name) || empty($last_name) || empty($gender) || empty($DoB) || empty($address) || empty($postcode) || empty($nationality) || empty($occupation) || empty($image) || empty($phone) || empty($email) || empty($email2) || empty($username) || empty($password) || empty($password2)) {
+    array_push ($message_array,"All field must be filled out");
+  }
 
     //First name
     $first_name = strip_tags($_POST['first_name']);//Remove html tags
@@ -184,6 +187,20 @@
         move_uploaded_file($_FILES["image"]["tmp_name"],$image);// save image on upload folder
 
         array_push ($message_array,"You have been registered! Please verify your email!");
+
+        //Clear session variables 
+        $_SESSION['first_name'] = "";
+        $_SESSION['last_name'] = "";
+        $_SESSION['gender'] = "";
+        $_SESSION['address'] = "";
+        $_SESSION['dob'] = "";
+        $_SESSION['postcode'] = "";
+        $_SESSION['nationality'] = "";
+        $_SESSION['occupation'] = "";
+        $_SESSION['phone'] = "";
+        $_SESSION['email'] = "";
+        $_SESSION['email2'] = "";
+        $_SESSION['username'] = "";
       }else{
         //echo "hoy nai "; exit();
         array_push ($message_array,"Something wrong happened! Please try again!");
