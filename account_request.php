@@ -26,6 +26,7 @@ include_once('includes/account_request_handler.php');
     </div>
     <span class="subheading">
     <?php if(in_array("All field must be filled out",$message_array)) echo "<span style='color: #e74c3c;'>All field must be filled out</span> <br>";?>
+    <?php if(in_array("Invalid Number",$message_array)) echo "<span style='color: #e74c3c;'>Phone number is invalid. Please give a valid number</span> <br>";?>
     <?php if(in_array("Email already exist",$message_array)) echo "<span style='color: #e74c3c;'>Email already exist</span> <br>";?>
     <?php if(in_array("Email Format is Invalid",$message_array)) echo "<span style='color: #e74c3c;'>Email Format is Invalid</span> <br>";?>
     <?php if(in_array("Emails don't match",$message_array)) echo "<span style='color: #e74c3c;'>Emails don't match</span> <br>";?>

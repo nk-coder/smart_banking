@@ -91,7 +91,7 @@ include_once('template/nav.php');
     				<div class="row justify-content-start py-3 py-lg-5">
 		          <div class="col-md-12 heading-section ftco-animate">
 		          	<span class="subheading">Welcome</span>
-		            <h2 class="mb-4" style="font-size: 44px; text-transform: capitalize;">Welcome to Neutral A Law Firm</h2>
+		            <h2 class="mb-4" style="font-size: 44px; text-transform: capitalize;">Welcome to Smart Banking System</h2>
 		            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 		            <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
 		          </div>
@@ -193,7 +193,7 @@ include_once('template/nav.php');
 
               <a class="nav-link px-4 py-1" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false"><span class="mr-3 flaticon-flasks"></span> Personal Loan</a>
 
-              <a class="nav-link px-4 py-1" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"><span class="mr-3 flaticon-analysis"></span> Insurance Law</a>
+              <a class="nav-link px-4 py-1" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"><span class="mr-3 flaticon-analysis"></span> Car Loan</a>
 
               <a class="nav-link px-4 py-1" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"><span class="mr-3 flaticon-web-design"></span> Criminal Law</a>
 
@@ -550,3 +550,76 @@ include_once('template/script.php');
 
   </body>
 </html>
+
+<!-- <?php 
+    include_once("dbcon.php");
+    $loans = mysqli_query($con,"SELECT * FROM loan_types ORDER BY id DESC");
+    if (mysqli_num_rows($loans) == 0 ) {
+    	echo "nai";
+    }else{	
+
+    ?>
+    <section class="ftco-section ftco-no-pb ftco-services" id="practice-section">
+      <div class="container">
+      	<div class="row justify-content-center pb-5">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+          	<span class="subheading">Loan Criteria</span>
+            <h2 class="mb-4">Loan</h2>
+            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+          </div>
+        </div>
+        <div class="row no-gutters">
+          	<div class="col-md-5 col-lg-3 ftco-animate py-4 nav-link-wrap">
+	            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+	            	<?php
+	            		foreach ($loans as $loan) { ?>
+	            			<a class="nav-link px-4 py-1 active" id="<?php echo $loan['id'] ?>" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-ideas"></span> <?php echo $loan['loan_type'] ?></a>
+	            		<?php }
+	            	?>
+	              <a class="nav-link px-4 py-1 active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true"><span class="mr-3 flaticon-ideas"></span> Home Loan</a>
+
+	              <a class="nav-link px-4 py-1" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab" aria-controls="v-pills-2" aria-selected="false"><span class="mr-3 flaticon-flasks"></span> Personal Loan</a>
+
+	              <a class="nav-link px-4 py-1" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"><span class="mr-3 flaticon-analysis"></span> Car Loan</a>
+
+	              <a class="nav-link px-4 py-1" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"><span class="mr-3 flaticon-web-design"></span> Criminal Law</a>
+
+	            </div>
+          	</div>
+          <div class="col-md-7 col-lg-9 ftco-animate p-4 p-md-5 d-flex align-items-center">
+            
+            <div class="tab-content pl-lg-4" id="v-pills-tabContent">
+            	<?php foreach ($loans as $loan) {
+            		# code...
+            	?>
+              <div class="tab-pane fade show active py-0 py-lg-5" id="<?php echo $loan['id'] ?>" role="tabpanel" aria-labelledby="v-pills-1-tab">
+              	<div class="d-lg-flex">
+	              	<div class="icon-law mr-md-4 mr-lg-5">
+		                <span class="icon mb-3 d-block flaticon-family"></span>
+		              </div>
+		              <div class="text">
+		                <h2 class="mb-4"><?php echo $loan['loan_type'] ?></h2>
+		                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt voluptate, quibusdam sunt iste dolores consequatur</p>
+		                <p>
+		                	<h3>Featurs</h3><hr>
+		            		<h6>Minimum Salary: <?php echo $loan['minimum_salary'] ?> BDT</h6>
+		            		<h6>Minimum Age: <?php echo $loan['minimum_age'] ?></h6>
+		            		<h6>Maximum Age: <?php echo $loan['maximum_age'] ?></h6>
+		            		<h6>Minimum Loan Amount: <?php echo $loan['minimum_loan_amount'] ?> BDT</h6>
+		            		<h6>Maximum Loan Amount: <?php echo $loan['maximum_loan_amount'] ?> BDT</h6>
+		            		<h6>Interest Rate: <?php echo $loan['interest_rate'] ?> %</h6>
+		                </p>
+		                <p><a href="backend/customer/loan_request" target="blank" class="btn btn-primary px-4 py-3">Apply for Loan</a></p>
+	                </div>
+                </div>
+              </div>
+              <?php } ?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+	<?php }
+    
+    ?>	 -->

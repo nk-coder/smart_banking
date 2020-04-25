@@ -20,10 +20,9 @@
   if (isset($_POST['account_request']) && !empty($_POST['account_request'])) {
     $date = date("Y-m-d");
 
-    //var_dump($_POST['account_request']); exit();
-    if (empty($first_name) || empty($last_name) || empty($gender) || empty($DoB) || empty($address) || empty($postcode) || empty($nationality) || empty($occupation) || empty($image) || empty($phone) || empty($email) || empty($email2) || empty($username) || empty($password) || empty($password2)) {
-    array_push ($message_array,"All field must be filled out");
-  }
+    if (empty($_POST['first_name']) || empty($_POST['last_name']) || empty($_POST['gender']) || empty($_POST['dob']) || empty($_POST['address']) || empty($_POST['postcode']) || empty($_POST['nationality']) || empty($_POST['occupation']) || empty($_FILES["image"]["name"]) || empty($_POST['phone']) || empty( $_POST['email']) || empty($_POST['email2']) || empty($_POST['username']) || empty($_POST['password']) || empty($_POST['password2'])) {
+      array_push ($message_array,"All field must be filled out");
+    }
 
     //First name
     $first_name = strip_tags($_POST['first_name']);//Remove html tags
@@ -68,11 +67,15 @@
     $_SESSION['occupation'] = $occupation; 
 
     //image
-    //$image = $_POST['image'];
     $image = "resource/images/uploads/customers/".basename($_FILES["image"]["name"]);
 
     //phone
-    $phone = str_replace(' ', '',$_POST['phone']);
+    $phone = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
+    $phone = str_replace("-", "", $phone);
+
+    if (strlen($phone) < 11 || strlen($phone) > 14) {
+     array_push ($message_array,"Invalid Number");
+    } 
     $_SESSION['phone'] = $phone; // Store first name into session variable.
 
     //Email

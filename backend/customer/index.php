@@ -22,7 +22,7 @@ include_once('template/sidebar.php');
 							<?php echo $customer['first_name']." ".$customer['last_name']; ?>
 						</h3>
 						<br>
-						<p><button class="btn btn-theme"><i class="fa fa-paper-plane"></i> Transfer Balance</button></p>
+						<p><a class="btn btn-theme" href="balanceTransfer"><i class="fa fa-paper-plane"></i>Transfer Balance</a></p>
 					</div>
 					<!-- /col-md-4 -->
 					<div class="col-md-4 centered">
