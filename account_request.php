@@ -35,7 +35,7 @@ include_once('includes/account_request_handler.php');
     <?php if(in_array("Password should only contain english character or number",$message_array)) echo "<span style='color: #e74c3c;'>Password should only contain english character or number</span> <br>";?>
     <?php if(in_array("Password must be more then 5 characters",$message_array)) echo "<span style='color: #e74c3c;'>Password must be more then 5 characters</span> <br>";?>
     <?php if(in_array("Username already",$message_array)) echo "<span style='color: #e74c3c;'>Username already exist</span> <br>";?>
-    <?php if(in_array("You have been registered! Please verify your email!",$message_array)) echo "<span style='color:#27ae60;'><h4>You have been registered! Please verify your email!</h4></span> <br>";?>
+    <?php if(in_array("You have been registered! Please verify your email!",$message_array)) echo "<span style='color: #2ecc71;'><h4>You have been registered! Please verify your email!</h4></span> <br>";?>
     <?php if(in_array("Something wrong happened! Please try again!",$message_array)) echo "<span style='color:#e74c3c;'><h4>Something wrong happened! Please try again!</h4></span> <br>";?>
     </span>
   </div>
