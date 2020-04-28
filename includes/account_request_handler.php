@@ -38,6 +38,7 @@
 
     //date of barth
     $DoB = $_POST['dob'];
+    $_SESSION['dob'] = $DoB; 
 
     //last name
     $gender = strip_tags($_POST['gender']);

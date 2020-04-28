@@ -15,6 +15,7 @@ include_once('includes/loan_request_handler.php');
             <h4>Please fill-in the required information, so that our team can get in touch with you.</h4>
             <div class="form-panel">
               <div style="align-content: center;">
+                <?php if(in_array("All field must be filled out",$message_array)) echo "<span style='color: #e74c3c;'>All field must be filled out</span> <br>";?>
                 <?php if(in_array("monthly income is incorret",$message_array)) echo "<span style='color: #e74c3c;'>Your monthly income must be $minimum_salary thousand or more</span> <br>";?>
                 <?php if(in_array("age not matched",$message_array)) echo "<span style='color: #e74c3c;'>$minimum_age to $maximum_age aged people will be eligible for home loan</span> <br>";?>
                 <?php if(in_array("loan amount not satisfied",$message_array)) echo "<span style='color: #e74c3c;'>You get $minimum_loan_amount BDT to $maximum_loan_amount BDT for home loan</span> <br>";?>
@@ -32,7 +33,7 @@ include_once('includes/loan_request_handler.php');
                         $loans = mysqli_query($con, "SELECT * FROM loan_types ORDER BY id DESC");
                         foreach ($loans as $loan) {
                         ?>
-                      	<option value="<?php echo  $loan['loan_type']?>"><?php echo $loan['loan_type']?> Loan</option>
+                      	<option <?php if(isset($_SESSION['loanType'])) {?> selected <?php }  ?> value="<?php echo  $loan['loan_type']?>"><?php echo $loan['loan_type']?> Loan</option>
                         <?php }
                          ?>
                       </select> 
@@ -42,20 +43,26 @@ include_once('includes/loan_request_handler.php');
                   <div class="form-group ">
                     <label for="income" class="control-label col-lg-2">Income</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="income" type="number" min="1" name="income" required />
+                      <input class="form-control " id="income" type="number" min="1" name="income" required value="<?php if(isset($_SESSION['income'])) {
+                        echo $_SESSION['income'];
+                      }  ?>" />
                     </div>
                   </div>
 
                   <div class="form-group ">
                     <label for="loanAmount" class="control-label col-lg-2">Your desired loan amount in BDT</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="loanAmount" type="number" min="250000" name="loanAmount" required />
+                      <input class="form-control " id="loanAmount" type="number" min="250000" name="loanAmount" required value="<?php if(isset($_SESSION['loanAmount'])) {
+                        echo $_SESSION['loanAmount'];
+                      }  ?>" />
                     </div>
                   </div>
                   <div class="form-group ">
-                    <label for="paytime" class="control-label col-lg-2">Pay time (In Month)</label>
+                    <label for="paytime" class="control-label col-lg-2">Pay time (In Year)</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="paytime" type="number" min="1" name="paytime" required />
+                      <input class="form-control " id="paytime" type="number" min="1" name="paytime" required value="<?php if(isset($_SESSION['paytime'])) {
+                        echo $_SESSION['paytime'];
+                      }  ?>" />
                     </div>
                   </div>
                   

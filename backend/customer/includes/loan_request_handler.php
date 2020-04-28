@@ -3,16 +3,26 @@ $message_array = array();
 if (isset($_POST['loan_request'])) {
 	$customerId = $customerLoggedIn; //get customer id form session at head.php
 	$loanType = $_POST['loanType'];
+	$_SESSION['loanType'] = $_POST['loanType'];
+
 	$income = $_POST['income'];
+	$_SESSION['income'] = $_POST['income'];
+
 	$loanAmount = $_POST['loanAmount'];
+	$_SESSION['loanAmount'] = $_POST['loanAmount'];
+
 	$paytime = $_POST['paytime'];
+	$_SESSION['paytime'] = $_POST['paytime'];
 
 	$dob = $customer['dob'];
 
 	$currentDate = date("Y-m-d");
 	$diff = date_diff(date_create($dob), date_create($currentDate)); // find difference between birth date and currtent date
 	$age = $diff->format('%y'); // Format into year
-	
+
+	if (empty($_POST['loanType']) || empty($_POST['income']) || empty($_POST['loanAmount']) || empty($_POST['paytime']) ) {
+      array_push ($message_array,"All field must be filled out");
+    }
 
 	//condition for home loan
 	if ($loanType == "Home") {
@@ -90,7 +100,8 @@ if (isset($_POST['loan_request'])) {
 	}
 
 	if (empty($message_array)) {
-		$insert_query = mysqli_query($con,"INSERT INTO loan_requests VALUES('','$customerId','$loanType','$income','$loanAmount','$currentDate','$paytime','NO','NO','','') ");
+		 
+		$insert_query = mysqli_query($con,"INSERT INTO loan_requests VALUES('','$customerId','','$loanType','$income','$loanAmount','$currentDate','$paytime','NO','NO','','','','','','','','') ");
 		if ($insert_query) {
 			array_push ($message_array,"request submited");
 		}
