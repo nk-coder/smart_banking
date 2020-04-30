@@ -7,5 +7,6 @@ RewriteRule ^customerLogin?$ customerLogin.php
 RewriteRule ^profile?$ profile.php
 RewriteRule ^balanceTransfer?$ balanceTransfer.php
 RewriteRule ^loanRequest?$ loanRequest.php
+RewriteRule ^loanRules?$ loanRules.php
 RewriteRule ^customerEdit?$ customerEdit.php
 RewriteRule ^changePassword?$ changePassword.php

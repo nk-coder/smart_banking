@@ -25,11 +25,16 @@
               </a>
           </li>
 
-          <li>
-            <a href="loanRequest">
+          
+          <li class="sub-menu">
+            <a href="javascript:;">
               <i class="fa fa-money"></i>
-              <span>Apply for Loan</span>
+              <span>Loan Section</span>
               </a>
+            <ul class="sub">
+              <li><a href="loanRequest">Apply for Loan</a></li>
+              <li><a href="loanRules">Loan Rules</a></li>
+            </ul>
           </li>
           
         </ul>
