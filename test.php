@@ -33,6 +33,16 @@ $customers = mysqli_query($con,"SELECT customers.id, customers.first_name, custo
 	echo $result * $terms;
 	echo "</br>";
 	printf("Monthly pay is %.2f", $result); 
+echo "</br>";
+	$currentDate = date('d');
+	echo $currentDate;
+	
 
-
+echo "</br>";
+//$date = date();
+	//$date = '2005/10/30';
+ 
+$weekday = date('l', strtotime(date('Y-m-d'))); // note: first arg to date() is lower-case L
+ 
+echo $weekday; 
 ?>

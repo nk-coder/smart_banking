@@ -13,7 +13,7 @@ include_once('template/sidebar.php');
 						<h4><i class="fa fa-user"></i> Pending Loan Requests</h4>
 						<hr>
 						<?php
-							$loanRequests = mysqli_query($con,"SELECT * FROM loan_requests WHERE approved='2' ORDER BY id DESC ");
+							$loanRequests = mysqli_query($con,"SELECT *, customers.first_name,customers.last_name,accounts.account_no FROM `loan_requests` JOIN customers ON loan_requests.customer_id = customers.id JOIN accounts on accounts.customer_id=customers.id WHERE loan_requests.approved=2 ORDER BY loan_requests.id DESC ");
 							if (mysqli_num_rows($loanRequests) == 0) {
 								echo "<h3>No loan request reject till now</h3>";
 							}else{
@@ -22,6 +22,8 @@ include_once('template/sidebar.php');
 						<thead>
 							<tr>
 								<th>Customer Id</th>
+								<th>Customer Name</th>
+								<th>Customer Account</th>
 								<th>Loan Type</th>
 								<th>Customer Income</th>
 								<th>Loan Amount</th>
@@ -34,6 +36,8 @@ include_once('template/sidebar.php');
 							<?php foreach($loanRequests as $loan){ ?>
 							<tr>
 								<td><?php echo $loan['customer_id']; ?></td>
+								<td><?php echo $loan['first_name']." ". $loan['last_name']; ?></td>
+								<td><?php echo $loan['account_no']; ?></td>
 								<td><?php echo $loan['loan_type']; ?></td>
 								<td><?php echo $loan['customer_income']; ?></td>
 								<td><?php echo $loan['loan_amount']; ?></td>

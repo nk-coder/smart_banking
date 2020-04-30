@@ -52,7 +52,7 @@ include_once('includes/loan_request_handler.php');
                   <div class="form-group ">
                     <label for="loanAmount" class="control-label col-lg-2">Your desired loan amount in BDT</label>
                     <div class="col-lg-10">
-                      <input class="form-control " id="loanAmount" type="number" min="250000" name="loanAmount" required value="<?php if(isset($_SESSION['loanAmount'])) {
+                      <input class="form-control " id="loanAmount" type="number" name="loanAmount" required value="<?php if(isset($_SESSION['loanAmount'])) {
                         echo $_SESSION['loanAmount'];
                       }  ?>" />
                     </div>

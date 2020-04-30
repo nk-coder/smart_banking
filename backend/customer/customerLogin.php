@@ -12,7 +12,7 @@ require_once('../../dbcon.php');
     if(empty($username) || empty($password)){
       array_push($message_array, "All Field must be filled out");
     }else{
-      $check_verification = mysqli_query($con, "SELECT customers.verified FROM `customers` WHERE username='$username' AND password='$password' AND verified=1 ");
+      $check_verification = mysqli_query($con, "SELECT customers.verified FROM `customers` WHERE username='$username' AND password='$password' AND verified=0 ");
       $verification_key_found_or_not = mysqli_num_rows($check_verification); 
 
       //Check account approved or not-First check NO
@@ -23,7 +23,7 @@ require_once('../../dbcon.php');
       $check_database_query = mysqli_query($con, "SELECT * FROM customers WHERE username='$username' AND password='$password' AND approved='YES' ");
       $check_login_query = mysqli_num_rows($check_database_query);
       
-      if ($verification_key_found_or_not == 0) {
+      if ($verification_key_found_or_not == 1) {
         array_push($message_array, "Please Verifiy your account");
       }else if($check_login_query == 1){
         $row = mysqli_fetch_array($check_database_query);

@@ -56,19 +56,19 @@ include_once('template/sidebar.php');
 								<h4>User Stats</h4>
 								<div class="row centered mt mb">
 									<div class="col-sm-4">
+										<h1></h1>
+										<h3></h3>
+										<h6></h6>
+									</div>
+									<div class="col-sm-4">
 										<h1><i class="fa fa-money"></i></h1>
 										<h3><?php echo $customer_account['balance'];?></h3>
 										<h5>Current Balance</h5>
 									</div>
 									<div class="col-sm-4">
-										<h1><i class="fa fa-trophy"></i></h1>
-										<h3>37</h3>
-										<h6>COMPLETED TASKS</h6>
-									</div>
-									<div class="col-sm-4">
-										<h1><i class="fa fa-shopping-cart"></i></h1>
-										<h3>1980</h3>
-										<h6>ITEMS SOLD</h6>
+										<h1></h1>
+										<h3></h3>
+										<h6></h6>
 									</div>
 								</div>
 								<!-- /row -->					
@@ -79,7 +79,7 @@ include_once('template/sidebar.php');
 					<!-- /tab-pane -->
 					<div id="edit" class="tab-pane">
 						<div class="row">
-							<div class="col-lg-8 col-lg-offset-2 detailed mt">
+							<div class="col-md-12">
 								<h4 class="mb">Loan</h4>
 								<?php 
 									$loan_requests = mysqli_query($con,"SELECT * FROM loan_requests WHERE customer_id='$customerLoggedIn' AND approved=1 ");
@@ -116,6 +116,7 @@ include_once('template/sidebar.php');
 											<td><?php echo $loan['request_date']; ?></td>
 											<td><?php echo $loan['pay_time']; ?> Years</td>
 											<td><?php echo $loan['approved_date']; ?></td>
+											<td><?php echo $loan['comments']; ?></td>
 											<td><?php echo $loan['approved_amount']; ?></td>
 											<td><?php echo $loan['mature_date']; ?></td>
 											<td><?php echo $loan['monthly_payable']; ?></td>
